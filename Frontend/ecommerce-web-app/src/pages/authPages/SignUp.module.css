@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.signup-container {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .form-box {
+    background: rgba(255, 255, 255, 0.95); /* Thora transparent white */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  .form-box h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .form-box p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+  }
+  
+  .input-group {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+  }
+  
+  .input-group input:focus {
+    border-color: #00a896; /* Shoply Theme Color */
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00a896;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+  
+  .signup-btn:hover {
+    background-color: #008f80;
+  }
+  
+  .login-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-link a {
+    color: #00a896;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+    .form-box {
+      padding: 20px;
+    }
+  }
