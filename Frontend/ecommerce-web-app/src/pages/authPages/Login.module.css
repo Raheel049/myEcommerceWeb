@@ -1,0 +1,83 @@
+.loginPage {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.4); /* Image ko thora dark karne ke liye */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loginCard {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 70vh;
+  }
+
+  .errorMessage{
+    color: red;
+  }
+  
+  .loginCard:hover {
+    transform: translateY(-5px); /* Chota sa lift transition */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  }
+
+  .loginCard p{
+    margin: 20px 0;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .inputGroup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputGroup input:focus {
+    border-color: #00a896; /* Shoply Theme Color */
+    outline: none;
+  }
+  
+  .loginBtn {
+    width: 100%;
+    padding: 12px;
+    background:  #00a896;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, letter-spacing 0.3s ease;
+  }
+  
+  .loginBtn:hover {
+    background:  #00a896;
+    letter-spacing: 1px; /* Subtle hover effect */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

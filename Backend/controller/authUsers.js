@@ -4,8 +4,11 @@ import bcrypt from "bcrypt"
 import {v4 as uuidv4} from "uuid" 
 import nodemailer from "nodemailer"
 import otpModel from "../models/usersModels/otpSchema.js"
+import jwt from "jsonwebtoken"
 
 export const signUp = async (request, response) => {
+
+    console.log("Full Body:", request.body);
     
     try {
         const {name, email, password, confirmPassword, phoneNumber} = request.body
@@ -15,6 +18,14 @@ export const signUp = async (request, response) => {
                 message : "Required fields are missing",
                 status : false
             })
+        }
+
+        if(password != confirmPassword){
+            return response.status(400).json({
+                message : "Please enter same password and confirm password",
+                status : false,
+
+            });
         }
 
         const existingUser = await userModel.findOne({email});
@@ -108,4 +119,60 @@ export const signUp = async (request, response) => {
         })
     }
 
+}
+
+
+export const login = async (request, response) => {
+    try {
+        const {email, password} = request.body;
+
+        if(!email || !password){
+            return response.status(400).json({
+                message : "Required fields are missing",
+                status : false
+            })
+        }
+
+        const userEmailExists = await userModel.findOne({email})
+
+        if(!userEmailExists){
+            return response.status(401).json({
+                message : "Invalid email or passwoed",
+                status : false
+            })
+        }
+
+        const matchPassword = await bcrypt.compare(password, userEmailExists.password);
+
+        if(!matchPassword){
+            return response.status(401).json({
+                message : "Invalid email or passwoed",
+                status : false
+            })
+        }
+
+        console.log("password",matchPassword)
+
+        const privateKey = process.env.PRIVATE_KEY
+
+        const token = jwt.sign({id : userEmailExists._id, email : email}, privateKey, {
+            expiresIn : "24h",
+        })
+
+        console.log("token",token);
+
+        response.status(200).json({
+            message : "Congurate login successfully",
+            status : true,
+            data: email,
+            token,
+
+        })
+
+    } catch (error) {
+        response.status(500).json({
+            message : error.message || "Internal server error ",
+            status : false,
+        })
+    }
 }

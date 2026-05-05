@@ -25,6 +25,10 @@
     text-align: center;
     height: 100vh;
   }
+
+  .errorPara{
+    color: red;
+  }
   
   .form-box h2 {
     margin-bottom: 10px;
@@ -56,6 +60,13 @@
     border: 1px solid #ddd;
     border-radius: 6px;
     outline: none;
+  }
+
+  .input-group input:hover{
+    border-color: rgb(118, 163, 211);
+    transition: all ease-in 0.3s;
+    transform: translateX(2px);
+    
   }
   
   .input-group input:focus {
