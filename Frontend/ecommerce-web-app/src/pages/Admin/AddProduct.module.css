@@ -1,0 +1,46 @@
+.container {
+    padding: 40px;
+    background-color: #020617;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .formHeader { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+  
+  .productForm {
+    background: #0f172a;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #1e293b;
+  }
+  
+  .mainGrid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+  
+  .inputGroup { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .inputGroup label { color: #94a3b8; font-size: 0.9rem; }
+  .inputGroup input, .inputGroup textarea, .inputGroup select {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 12px; color: #fff; outline: none;
+  }
+  .inputGroup input:focus { border-color: #06b6d4; }
+  
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  
+  .uploadBox {
+    height: 250px; border: 2px dashed #334155; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  
+  .uploadPlaceholder { display: flex; flex-direction: column; align-items: center; color: #64748b; gap: 10px; }
+  .previewContainer img { width: 100%; height: 250px; object-fit: contain; }
+  
+  .submitBtn {
+    width: 100%; padding: 15px; background: #06b6d4; color: #0f172a;
+    border: none; border-radius: 8px; font-weight: 800; cursor: pointer; margin-top: 20px;
+  }
+  
+  .spinner { animation: spin 1s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  
+  @media (max-width: 1024px) { .mainGrid { grid-template-columns: 1fr; } }

@@ -1,9 +1,11 @@
-import express from "express";
 import dotenv from "dotenv"
-dotenv.config()
+dotenv.config();
+import express from "express";
 import { dbConnect } from "./config/db.js";
 import authRoute from "./routes/authUserRoute.js";
 import cors from "cors"
+import adminRoutes from "./routes/adminRoutes.js";
+import upload from "./middleware/multer.js";
 
 
 const app = express();
@@ -21,6 +23,7 @@ app.post("/test-api",(req, res) => {
 })
 
 app.use("/api/user",authRoute);
+app.use("/api/admin", upload.single('image'), adminRoutes);
 
 
 app.listen(port, () => console.log("Server Running on port 5000"));

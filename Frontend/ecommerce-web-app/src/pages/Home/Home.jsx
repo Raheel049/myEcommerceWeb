@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
 import Navbar from "../../components/Navbar";
+import ProductCard from "../../components/ProductCard";
 
 
 import "swiper/css";
@@ -36,7 +37,7 @@ const Home = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
           effect={"fade"} // Smooth transition ke liye
-          autoplay={{ delay: 4000 }}
+          autoplay={{ delay: 2000 }}
           pagination={{ clickable: true }}
           navigation={true}
           loop={true}
@@ -57,8 +58,10 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </section>
 
+        
+      </section>
+          <ProductCard />
       {/* Baqi Hero Section aur Features neeche aayenge */}
     </div>
   );

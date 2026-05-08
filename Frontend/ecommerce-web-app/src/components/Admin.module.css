@@ -1,0 +1,135 @@
+/* Container for the entire navbar */
+.navbar {
+    background-color: #0f172a; /* Deep dark theme */
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Sidebar se upar rakha hai taake menu icon accessible rahe */
+    color: #fff;
+    width: 100%;
+  }
+  
+  .navContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    height: 70px;
+  }
+  
+  .leftGroup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .menuBtn {
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+  
+  .menuBtn:hover {
+    color: #06b6d4; /* Cyan accent color on hover */
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+  
+  .logo span {
+    color: #06b6d4; /* Branding accent */
+  }
+  
+  .searchBox {
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 8px;
+    width: 350px;
+    gap: 10px;
+    border: 1px solid transparent;
+  }
+  
+  .searchBox:focus-within {
+    border-color: #06b6d4;
+  }
+  
+  .searchBox input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f8fafc;
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  
+  .rightGroup {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  .addBtn {
+    background: #06b6d4;
+    color: #0f172a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .iconGroup {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #94a3b8;
+  }
+  
+  .logout {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .logout:hover {
+    color: #ef4444;
+  }
+  
+  /* Sidebar specifically for this navbar toggle */
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 70px);
+    background: #0f172a;
+    border-right: 1px solid #1e293b;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .sidebarItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .searchBox { display: none; }
+    .addBtn span { display: none; }
+  }
