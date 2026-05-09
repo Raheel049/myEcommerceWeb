@@ -13,6 +13,7 @@ const AddProduct = () => {
     title: '',
     description: '',
     price: '',
+    oldPrice: '',
     discount: '',
     category: 'Mobiles',
   });
@@ -39,6 +40,7 @@ const AddProduct = () => {
     data.append('price', formData.price);
     data.append('discount', formData.discount);
     data.append('category', formData.category);
+    data.append('oldPrice', formData.oldPrice);
     if (image) data.append('image', image);
 
     dispatch(addProduct(data));
@@ -47,7 +49,7 @@ const AddProduct = () => {
   useEffect(() => {
     if (success) {
       alert("Product Added Successfully!");
-      setFormData({ title: '', description: '', price: '', discount: '', category: 'Mobiles' });
+      setFormData({ title: '', description: '', price: '', discount: '', category: 'Mobiles', oldPrice: "" });
       setImage(null); setPreview(null);
       dispatch(resetStatus());
     }
@@ -87,6 +89,11 @@ const AddProduct = () => {
                 <input type="number" name="discount" value={formData.discount} onChange={handleChange} />
               </div>
             </div>
+
+            <div className={styles.inputGroup}>
+                <label>Old Price</label>
+                <input type="number" name="oldPrice" value={formData.oldPrice} onChange={handleChange} required />
+              </div>
           </div>
 
           {/* Right Column: Image & Category */}

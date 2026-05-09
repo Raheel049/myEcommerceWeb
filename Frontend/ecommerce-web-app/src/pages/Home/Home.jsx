@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
@@ -17,6 +17,8 @@ import img1 from "../../assets/sliderMobileImg.jpg"
 import img2 from "../../assets/aiBudsImg.jpg"
 import img3 from "../../assets/sliderBasketImg.jpg"
 import img4 from "../../assets/shopingBag.png"
+import { toast } from "react-toastify";
+import axiosInstance from "../../utiles/axiosInstance";
 
 
 
@@ -27,6 +29,26 @@ const Home = () => {
     { url: img3, title: "Luxury Shopping", sub: "Style that defines you." },
     { url: img4, title: "Preious Bags", sub: "Make Looks Better."}
   ];
+
+  const [products, setProducts] = useState([]);
+
+  const fetchAllProducts = async () => {
+    try {
+      const response = await axiosInstance.get("/admin/all-products");
+      if(response.data.status == true || response.data.status === 200){
+        setProducts(response.data.data)
+        console.log("products are fetches successfully",response.data.data);
+      }
+    } catch (error) {
+      toast.error(error.message || "Some thing went wrong");
+    }
+  }
+
+  console.log("product",products)
+
+  useEffect(() => {
+    fetchAllProducts();
+  },[])
 
   return (
     <div className={styles.homeContainer}>
@@ -61,7 +83,8 @@ const Home = () => {
 
         
       </section>
-          <ProductCard />
+          
+          <ProductCard product= {products} />
       {/* Baqi Hero Section aur Features neeche aayenge */}
     </div>
   );
