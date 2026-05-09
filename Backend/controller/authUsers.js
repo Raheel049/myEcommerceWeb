@@ -105,6 +105,8 @@ export const signUp = async (request, response) => {
             email,
           };
 
+          console.log("OTP",OTP);
+
 
         response.status(200).json({
             message : "Account created successfully!",

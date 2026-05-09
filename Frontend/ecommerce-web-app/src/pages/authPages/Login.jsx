@@ -4,12 +4,14 @@ import { loginUser } from "../../features/auth/authSlice";
 import { toast } from "react-toastify";
 import loginImg from "../../assets/loginPageImage.jpg"; // Aapki di hui image
 import styles from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const { loadingLogin, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -18,8 +20,11 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(credentials)).then((res) => {
-      if (res.payload.status) {
+      if (res.payload.status == 200 || res.payload.status == true) {
         toast.success("Welcome back to Shoply!");
+        localStorage.setItem("token", res.payload.token);
+        
+        navigate("/User/UserDashboard");
       }else{
         const errorMessage = res.payload || "Some thing went wrong";
         toast.error(errorMessage || "Some thing went wrong");

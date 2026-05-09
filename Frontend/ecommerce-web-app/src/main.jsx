@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';           // Redux Provider
 import { store } from './app/store';              // Aapka Store
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  
 );

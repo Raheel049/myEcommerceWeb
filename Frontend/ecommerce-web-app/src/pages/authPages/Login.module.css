@@ -1,83 +1,144 @@
 .loginPage {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 1s ease-in-out;
+  min-height: 100vh; /* height ki jagah min-height taake mobile par content stretch ho sake */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+  padding: 20px; /* Choti devices par sides se gap ke liye */
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed; /* Poori screen cover karne ke liye */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.loginCard {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 420px; /* Desktop ke liye max width */
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* height: 70vh ko hata diya kyunke ye mobile par content ko truncate kar sakti hai */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- Responsive Media Queries --- */
+
+/* 1. Tablets (768px se niche) */
+@media (max-width: 768px) {
+  .loginCard {
+      padding: 30px;
+      max-width: 90%; /* Tablet par card thora wide ho jaye */
   }
   
-  .overlay {
-    background: rgba(0, 0, 0, 0.4); /* Image ko thora dark karne ke liye */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .loginCard h2 {
+      font-size: 24px; /* Heading thori choti */
+  }
+}
+
+/* 2. Mobile Phones (480px se niche) */
+@media (max-width: 480px) {
+  .loginPage {
+      background-attachment: scroll; /* Mobile browser performance ke liye */
+  }
+
+  .loginCard {
+      padding: 25px 20px;
+      border-radius: 10px;
+      max-width: 100%; /* Mobile par poori width le le */
+  }
+
+  .inputGroup input {
+      padding: 10px; /* Input chota ho jaye */
+      font-size: 14px;
+  }
+
+  .loginBtn {
+      padding: 10px;
+      font-size: 15px;
+  }
+}
+
+/* 3. Landscape Mode aur Short Screens (Height kam ho jab) */
+@media (max-height: 600px) {
+  .loginPage {
+      align-items: flex-start; /* Card upar se start ho taake scroll ho sake */
+      padding-top: 50px;
+      padding-bottom: 50px;
   }
   
   .loginCard {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    width: 100%;
-    max-width: 400px;
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 70vh;
+      height: auto; /* Height auto taake content fit ho */
   }
+}
 
-  .errorMessage{
-    color: red;
-  }
-  
-  .loginCard:hover {
-    transform: translateY(-5px); /* Chota sa lift transition */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-  }
+/* --- Baqi Styles --- */
+.errorMessage {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
-  .loginCard p{
-    margin: 20px 0;
-  }
-  
-  .inputGroup {
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  .inputGroup input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .inputGroup input:focus {
-    border-color: #00a896; /* Shoply Theme Color */
-    outline: none;
-  }
-  
-  .loginBtn {
-    width: 100%;
-    padding: 12px;
-    background:  #00a896;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, letter-spacing 0.3s ease;
-  }
-  
-  .loginBtn:hover {
-    background:  #00a896;
-    letter-spacing: 1px; /* Subtle hover effect */
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box; /* Padding ko width ke andar rakhne ke liye */
+}
+
+.inputGroup input:focus {
+  border-color: #00a896;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 168, 150, 0.2);
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+  background: #00a896;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.loginBtn:hover {
+  background: #008f80;
+  transform: translateY(-2px);
+}
+
+.loginBtn:active {
+  transform: translateY(0);
+}

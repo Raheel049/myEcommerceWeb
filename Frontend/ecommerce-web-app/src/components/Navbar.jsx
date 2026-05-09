@@ -16,8 +16,12 @@ import {
   Watch,
   Percent,
 } from "lucide-react";
+import {  useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
+
   return (
     <header className={styles.header}>
       {/* Top Row: Logo, Search, Actions */}
@@ -41,7 +45,7 @@ const Navbar = () => {
             <span className={styles.iconLabel}>Language</span>
           </div>
           <div className={styles.iconItem}>
-            <User size={22} />
+            <User size={22} onClick={() => {navigate("/authPages/Login")}}/>
             <span className={styles.iconLabel}>Sign In</span>
           </div>
           <div className={styles.iconItem}>

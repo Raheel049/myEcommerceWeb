@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { addProduct, resetStatus } from '../../features/product/productSlice.js';
 import { Upload, X, PackagePlus, Loader2 } from 'lucide-react';
 import styles from './AddProduct.module.css';
+import { toast } from 'react-toastify';
 
 const AddProduct = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const AddProduct = () => {
 
   useEffect(() => {
     if (success) {
-      alert("Product Added Successfully!");
+      toast.success("Product Added Successfully!");
       setFormData({ title: '', description: '', price: '', discount: '', category: 'Mobiles', oldPrice: "" });
       setImage(null); setPreview(null);
       dispatch(resetStatus());
