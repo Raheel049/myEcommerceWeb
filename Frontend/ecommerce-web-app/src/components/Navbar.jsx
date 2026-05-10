@@ -16,11 +16,10 @@ import {
   Watch,
   Percent,
 } from "lucide-react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <header className={styles.header}>
@@ -45,7 +44,12 @@ const Navbar = () => {
             <span className={styles.iconLabel}>Language</span>
           </div>
           <div className={styles.iconItem}>
-            <User size={22} onClick={() => {navigate("/authPages/Login")}}/>
+            <User
+              size={22}
+              onClick={() => {
+                navigate("/authPages/Login");
+              }}
+            />
             <span className={styles.iconLabel}>Sign In</span>
           </div>
           <div className={styles.iconItem}>
@@ -53,18 +57,19 @@ const Navbar = () => {
             <span className={styles.iconLabel}>Orders</span>
           </div>
           <div className={`${styles.iconItem} styles.cartContainer`}>
-            
-              <ShoppingCart size={22} />
+            <ShoppingCart size={22} />
 
-              <span className={styles.badge}>2</span>
-              <span className={styles.iconLabel}>Cart</span>
-            
+            <span className={styles.badge}>2</span>
+            <span className={styles.iconLabel}>Cart</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Row: Categories */}
       <nav className={styles.navbarBottom}>
+        <a href="#home" className={styles.navLink}>
+          <Home size={16} /> HOME
+        </a>
         <a href="#mobiles" className={styles.navLink}>
           <Smartphone size={16} /> MOBILES
         </a>
@@ -72,7 +77,7 @@ const Navbar = () => {
           <Laptop size={16} /> LAPTOPS
         </a>
         <a href="#tv" className={styles.navLink}>
-          <Tv size={16} /> TVs & AUDIO
+          <Tv size={16} /> AUDIO
         </a>
         <a href="#appliances" className={styles.navLink}>
           <Microwave size={16} /> APPLIANCES
@@ -82,9 +87,6 @@ const Navbar = () => {
         </a>
         <a href="#cameras" className={styles.navLink}>
           <Camera size={16} /> CAMERAS
-        </a>
-        <a href="#home" className={styles.navLink}>
-          <Home size={16} /> HOME
         </a>
         <a href="#wearables" className={styles.navLink}>
           <Watch size={16} /> WEARABLES

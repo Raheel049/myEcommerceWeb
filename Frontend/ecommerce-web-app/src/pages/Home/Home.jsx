@@ -17,8 +17,12 @@ import img1 from "../../assets/sliderMobileImg.jpg"
 import img2 from "../../assets/aiBudsImg.jpg"
 import img3 from "../../assets/sliderBasketImg.jpg"
 import img4 from "../../assets/shopingBag.png"
-import { toast } from "react-toastify";
-import axiosInstance from "../../utiles/axiosInstance";
+// import { toast } from "react-toastify";
+// import axiosInstance from "../../utiles/axiosInstance";
+import Footer from "../../components/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "../../features/product/productSlice";
+import Loader from "../../components/Loader";
 
 
 
@@ -30,28 +34,31 @@ const Home = () => {
     { url: img4, title: "Preious Bags", sub: "Make Looks Better."}
   ];
 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  const fetchAllProducts = async () => {
-    try {
-      const response = await axiosInstance.get("/admin/all-products");
-      if(response.data.status == true || response.data.status === 200){
-        setProducts(response.data.data)
-        console.log("products are fetches successfully",response.data.data);
-      }
-    } catch (error) {
-      toast.error(error.message || "Some thing went wrong");
-    }
-  }
+  // const fetchAllProducts = async () => {
+  //   try {
+  //     const response = await axiosInstance.get("/admin/all-products");
+  //     if(response.data.status == true || response.data.status === 200){
+  //       setProducts(response.data.data)
+  //       console.log("products are fetches successfully",response.data.data);
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.message || "Some thing went wrong");
+  //   }
+  // }
 
-  console.log("product",products)
+  // console.log("product",products)
+
+  const {products, loading} = useSelector((state) => state.product);
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetchAllProducts();
-  },[])
+    dispatch(fetchAllProducts())
+  },[dispatch])
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={styles.homeContainer}> {loading ? <Loader /> : ""}
       {/* Navbar yahan pehle wala hi rahega */}
         <Navbar />
       {/* Slider Section */}
@@ -86,6 +93,7 @@ const Home = () => {
           
           <ProductCard product= {products} />
       {/* Baqi Hero Section aur Features neeche aayenge */}
+      <Footer />
     </div>
   );
 };

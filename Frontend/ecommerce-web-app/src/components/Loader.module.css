@@ -1,0 +1,24 @@
+.loaderOverlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh; /* Cards ki jagah spinner dikhane ke liye */
+    width: 100%;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #00a896; /* Shoply Theme Color */
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .loaderOverlay p {
+    color: #00a896;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
