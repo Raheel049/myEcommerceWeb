@@ -34,31 +34,25 @@ const Home = () => {
     { url: img4, title: "Preious Bags", sub: "Make Looks Better."}
   ];
 
-  // const [products, setProducts] = useState([]);
-
-  // const fetchAllProducts = async () => {
-  //   try {
-  //     const response = await axiosInstance.get("/admin/all-products");
-  //     if(response.data.status == true || response.data.status === 200){
-  //       setProducts(response.data.data)
-  //       console.log("products are fetches successfully",response.data.data);
-  //     }
-  //   } catch (error) {
-  //     toast.error(error.message || "Some thing went wrong");
-  //   }
-  // }
-
-  // console.log("product",products)
-
-  const {products, loading} = useSelector((state) => state.product);
+  const {products, loading, searchQuery} = useSelector((state) => state.product);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAllProducts())
   },[dispatch])
 
+  const searchKeyWods = searchQuery.toLowerCase()
+
+  const filteredProducts = products.filter((product) => {
+    return ( product.title?.toLowerCase().includes(searchKeyWods) || 
+    product.category?.toLowerCase().includes(searchKeyWods)
+  );
+  })
+
   return (
     <div className={styles.homeContainer}> {loading ? <Loader /> : ""}
+  {console.log("search Query",searchQuery)}
+  
       {/* Navbar yahan pehle wala hi rahega */}
         <Navbar />
       {/* Slider Section */}
@@ -91,7 +85,7 @@ const Home = () => {
         
       </section>
           
-          <ProductCard product= {products} />
+          <ProductCard product= {filteredProducts} />
       {/* Baqi Hero Section aur Features neeche aayenge */}
       <Footer />
     </div>

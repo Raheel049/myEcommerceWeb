@@ -87,8 +87,8 @@
   
   .badge {
     position: absolute;
-    top: 5px;
-    right: 2%;
+    top: -5px;
+    right: -25%;
     background-color: #ff4d4d;
     color: white;
     font-size: 0.7rem;

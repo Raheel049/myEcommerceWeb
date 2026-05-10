@@ -32,8 +32,13 @@ export const fetchAllProducts = createAsyncThunk(
 
 const productSlice = createSlice({
   name: 'product',
-  initialState: { products: [], loading: false, error: null, success: false },
+  initialState: { products: [], loading: false, error: null, success: false, searchQuery : "" },
   reducers: {
+
+    setSearchQuery : (state, action) => {
+        state.searchQuery = action.payload
+    },
+
     resetStatus: (state) => {
       state.success = false;
       state.error = null;
@@ -69,5 +74,5 @@ const productSlice = createSlice({
   
 });
 
-export const { resetStatus } = productSlice.actions;
+export const { resetStatus, setSearchQuery } = productSlice.actions;
 export default productSlice.reducer;

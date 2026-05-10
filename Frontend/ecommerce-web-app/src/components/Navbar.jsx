@@ -17,9 +17,18 @@ import {
   Percent,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSearchQuery } from "../features/product/productSlice"
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch()
+
+  const handleSearch = (e) => {
+    const value = e.target.value
+    dispatch(setSearchQuery(value))
+  }
 
   return (
     <header className={styles.header}>
@@ -32,6 +41,7 @@ const Navbar = () => {
             type="text"
             placeholder="Search products, brands, categories..."
             className={styles.searchInput}
+            onChange={handleSearch}
           />
           <button className={styles.searchButton}>
             <Search size={20} />
@@ -56,7 +66,7 @@ const Navbar = () => {
             <Package size={22} />
             <span className={styles.iconLabel}>Orders</span>
           </div>
-          <div className={`${styles.iconItem} styles.cartContainer`}>
+          <div className={`${styles.iconItem} ${styles.cartContainer}`}>
             <ShoppingCart size={22} />
 
             <span className={styles.badge}>2</span>
